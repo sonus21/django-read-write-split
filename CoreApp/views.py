@@ -22,7 +22,7 @@ def order_detail(request, id):
 def create_order(request):
     form = CreateOrder(json.loads(request.body))
     error_message = dict(message="Validation Error", code=400,
-                         fields=dict(email=["order already exist"]))
+                         fields=dict(merchant_order_id=["order already exist"]))
     if not form.is_valid():
         error_message['fields'] = form.errors
         return JsonResponse(dict(error=error_message), status=400)
